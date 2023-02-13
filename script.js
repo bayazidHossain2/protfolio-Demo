@@ -71,3 +71,45 @@ $(document).ready(function(){
         }
     });
 });
+
+const form = document.querySelector(".contact form"),
+messageSend = form.querySelector(".button");
+
+if(form == null){
+    console.log("form null");
+}else{
+    console.log("form not null");
+}
+if(messageSend == null){
+    console.log("button null");
+}else{
+    messageSend.onclick = ()=>{
+        console.log("send clicked.");
+        let xhr = new XMLHttpRequest(); //creating XML object
+        xhr.open("POST","php/msend.php",true);
+        console.log("ajax opened.");
+        xhr.onload = ()=>{
+            console.log("page loaded.");
+            if(xhr.readyState === XMLHttpRequest.DONE){
+                if(xhr.status === 200){
+                    let data = xhr.response;
+                    if(data == "success"){
+
+                    }else{
+                        errorText.textContent = data;
+                        errorText.style.display = "block";
+                    }
+                    console.log("response is :");
+                    console.log(data);
+                }
+            }else{
+                console.log("ajax not loaded.");
+            }
+        }
+        // we have to send the form data throwgh ajax to php 
+        let formData = new FormData(form);
+        xhr.send(formData);
+    }
+}
+
+console.log("lask\ndkjf");

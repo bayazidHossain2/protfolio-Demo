@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -264,31 +265,68 @@
 
           <div class="column right">
             <div class="text">Message me</div>
-            <form action="#">
+            <form action="#message" method="POST" enctype="multipart/form-data">
               <div class="fields">
                 <div class="field name">
-                  <input type="text" placeholder="Name" required />
+                  <input type="text" name="name" placeholder="Name" required />
                 </div>
                 <div class="field email">
-                  <input type="email" placeholder="Email" required />
+                  <input type="email" name="email" placeholder="Email" required />
                 </div>
               </div>
               <div class="field">
-                <input type="text" placeholder="Subject" required />
+                <input type="text" name="sub" placeholder="Subject" required />
               </div>
               <div class="field textarea">
                 <textarea
                   cols="30"
                   rows="10"
-                  placeholder="Message.."
+                  name="msg"
+                  placeholder="Message..."
                   required
                 ></textarea>
               </div>
-              <div class="button-area">
+              <div class="field button">
                 <button type="submit">Send message</button>
               </div>
             </form>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Message show -->
+    <section class="message" id="message">
+      <div class="max-width">
+        <h1 class="title">All Messages</h1>
+        <div class="message-content">
+          <!-- <div class="card">
+            <div class="box">
+              <div class="name">Bayazid Hossain</div>
+              <div class="email">bh.190140@s.pust.ac.bd</div>
+              <div class="subject">Testing Message</div>
+              <p>
+                This is an Testing message.This is an Testing message.This is an Testing message.
+                This is an Testing message.This is an Testing message.This is an Testing message.
+                This is an Testing message.
+              </p>
+            </div>
+          </div> -->
+          <?php
+              $conn = mysqli_connect("localhost","root","","protfolio");
+              $sql = mysqli_query($conn,"SELECT * FROM messages");
+              while($row = $sql->fetch_array()){
+
+                echo "<div class=\"card\">";
+                echo "<div class=\"box\">";
+                echo "<div class=\"name\">".$row['name']."</div>";
+                echo "<div class=\"email\">".$row['email']."</div>";
+                echo "<div class=\"subject\">".$row['sub']."</div>";
+                echo "<p>".$row['msg']."</p>";
+                echo "</div>";
+                echo "</div>";
+              }
+          ?>
         </div>
       </div>
     </section>
@@ -303,5 +341,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script srt="JavaScript/messenger.js"></script>
   </body>
 </html>
