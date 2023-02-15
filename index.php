@@ -268,14 +268,22 @@
             <form action="#message" method="POST" enctype="multipart/form-data">
               <div class="fields">
                 <div class="field name">
-                  <input type="text" name="name" placeholder="Name" required />
+                  <input type="text" name="fname" placeholder="First Name" required />
                 </div>
-                <div class="field email">
-                  <input type="email" name="email" placeholder="Email" required />
+                <div class="field name">
+                  <input type="text" name="mname" placeholder="Middle Name" />
+                </div><div class="field name">
+                  <input type="text" name="lname" placeholder="Last Name" required />
                 </div>
               </div>
               <div class="field">
+                <input type="email" name="email" placeholder="Email" required />
+              </div>
+              <div class="field">
                 <input type="text" name="sub" placeholder="Subject" required />
+              </div>
+              <div class="field">
+                <input type="text" name="con" placeholder="Contuct Number" required />
               </div>
               <div class="field textarea">
                 <textarea
@@ -319,10 +327,11 @@
 
                 echo "<div class=\"card\">";
                 echo "<div class=\"box\">";
-                echo "<div class=\"name\">".$row['name']."</div>";
-                echo "<div class=\"email\">".$row['email']."</div>";
-                echo "<div class=\"subject\">".$row['sub']."</div>";
-                echo "<p>".$row['msg']."</p>";
+                echo "<div class=\"name\">"."Name: ".$row['fname']." ".$row['mname']." ".$row['lname']."</div>";
+                echo "<div class=\"email\">"."Email: ".$row['email']."</div>";
+                echo "<div class=\"Contuct\">"."Contact: ".$row['contuct']."</div>";
+                echo "<div class=\"subject\">"."Subject: ".$row['sub']."</div>";
+                echo "<p>"."<h3>Message: </h3>".$row['msg']."</p>";
                 echo "</div>";
                 echo "</div>";
               }

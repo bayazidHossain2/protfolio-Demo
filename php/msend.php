@@ -3,18 +3,21 @@
     if(!$conn){
         echo "Fail to connect database";
     }
-    $name = $_POST['name'];
+    $fname = $_POST['fname'];
+    $mname = $_POST['mname'];
+    $lname = $_POST['lname'];
     $email = $_POST['email'];
+    $con = $_POST['con'];
     $sub = $_POST['sub'];
     $msg = $_POST['msg'];
 
-    if(!empty($name)){
+    if(!empty($fname) && !empty($mname) && !empty($lname)){
         //echo "tema name not empty.";
         if(!empty($email) && !empty($sub) && !empty($msg)){
             //echo "all data are get.";
             $tid = time();
 
-            $sql = "INSERT INTO messages (mid, name, email, sub, msg) VALUES ('{$tid}', '{$name}', '{$email}', '{$sub}', '{$msg}')";
+            $sql = "INSERT INTO messages (mid, fname, mname, lname, contuct, email, sub, msg) VALUES ('{$tid}', '{$fname}', '{$mname}', '{$lname}', '{$con}', '{$email}', '{$sub}', '{$msg}')";
             if(mysqli_query($conn,$sql)){
                 echo "<br>data insert success.<br>";
             }else{
